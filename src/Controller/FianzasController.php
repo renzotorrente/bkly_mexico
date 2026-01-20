@@ -11,7 +11,8 @@ use App\Controller\AppController;
  */
 class FianzasController extends AppController
 {
-    public function initialize(){
+    public function initialize(): void
+    {
         parent::initialize();
         $this->viewBuilder()->setLayout('interno');
         $secciones_sidebar = [

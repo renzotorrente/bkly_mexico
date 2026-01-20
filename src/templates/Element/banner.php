@@ -9,22 +9,32 @@
                 'grupo-berkley' => 'Grupo Berkley',
                 'rrhh' => 'RRHH',
             ];
-            $texto = $textos_solapa[$this->request->getParam('pass')[0]];
-
-            $ruta = 'banners'.DS.$this->request->getParam('pass')[0].'.jpg';            
+            
+            // Obtener el slug de la URL (igual que en el controlador)
+            $slug = $this->request->getParam('pass')[0] ?? null;
+            if (is_null($slug) || empty($slug)) {
+                $path = trim($this->request->getPath(), '/');
+                $pathParts = explode('/', $path);
+                $slug = end($pathParts);
+            }
+            
+            $texto = $textos_solapa[$slug] ?? 'Institucional';
+            $ruta = 'banners'.DS.$slug.'.jpg';            
             break;
 
         case 'Siniestros':
-            $ruta = 'banners'.DS.'siniestros'.DS.$this->request->getParam('action').'.jpg';
+            $action = $this->request->getParam('action') ?? 'index';
+            $ruta = 'banners'.DS.'siniestros'.DS.$action.'.jpg';
             $textos = [
                 'seguros' => 'Siniestros',
                 'fianzas' => 'Reclamaciones',
             ];
-            $texto = $textos[$this->request->getParam('action')];
+            $texto = $textos[$action] ?? 'Siniestros';
             break;
         
         case 'Seguros':
-            $ruta = 'banners'.DS.'productos'.DS.'seguros'.DS.$this->request->getParam('action').'.jpg';
+            $action = $this->request->getParam('action') ?? 'index';
+            $ruta = 'banners'.DS.'productos'.DS.'seguros'.DS.$action.'.jpg';
             $textos = [
                 'index' => 'Seguros',
                 'seguroDeResponsabilidadCivil' => 'Seguros Responsabilidad Civil',
@@ -33,27 +43,29 @@
                 'construccion' => 'Diversos Misceláneos',
                 'seguroMaritimoTerrestreAereo' => 'Transporte marítimo, aéreo y terrestre'
             ];
-            $texto = $textos[$this->request->getParam('action')];
+            $texto = $textos[$action] ?? 'Seguros';
             break;
 
         case 'Fianzas':
-            $ruta = 'banners'.DS.'productos'.DS.'fianzas'.DS.$this->request->getParam('action').'.jpg';
+            $action = $this->request->getParam('action') ?? 'index';
+            $ruta = 'banners'.DS.'productos'.DS.'fianzas'.DS.$action.'.jpg';
             $textos = [
                 'index' => 'Fianzas',
                 'credito' => 'Crédito',
                 'administrativas' => 'Administrativas', 
                 'judiciales' => 'Judiciales',
             ];
-            $texto = $textos[$this->request->getParam('action')];
+            $texto = $textos[$action] ?? 'Fianzas';
             break;
         
         case 'Pages':
-            $ruta = 'banners'.DS.$this->request->getParam('action').'.jpg';
+            $action = $this->request->getParam('action') ?? 'display';
+            $ruta = 'banners'.DS.$action.'.jpg';
             $textos = [
                 'avisoDePrivacidad' => 'Aviso de Privacidad',
                 'informacionFinanciera' => 'Información Financiera',
             ];
-            $texto = $textos[$this->request->getParam('action')];
+            $texto = $textos[$action] ?? 'Página';
             break;
 
 

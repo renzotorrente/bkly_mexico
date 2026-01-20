@@ -12,7 +12,8 @@ use App\Controller\AppController;
 class SegurosController extends AppController
 {
 
-    public function initialize(){
+    public function initialize(): void
+    {
         parent::initialize();
         $this->viewBuilder()->setLayout('interno');
         $secciones_sidebar = [

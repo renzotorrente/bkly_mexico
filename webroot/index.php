@@ -15,6 +15,10 @@
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  */
 
+// Suprimir warnings/notices que pueden causar "headers already sent"
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE & ~E_DEPRECATED);
+ini_set('display_errors', '0');
+
 // Check platform requirements
 require dirname(__DIR__) . '/config/requirements.php';
 

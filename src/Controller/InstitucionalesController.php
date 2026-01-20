@@ -18,12 +18,27 @@ class InstitucionalesController extends AppController
      * @throws \Cake\Http\Exception\NotFoundException When the view file could not
      *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
      */
-    public function index($seccion = null)
+    public function index(...$args)
     {
         $this->viewBuilder()->setLayout('interno');
-        if(is_null($seccion)){
+        
+        // Obtener la sección de los argumentos pasados o de la URL
+        $seccion = $args[0] ?? $this->request->getParam('pass')[0] ?? null;
+        
+        // Si aún no hay sección, obtenerla de la ruta actual
+        if(is_null($seccion) || empty($seccion)){
+            $path = trim($this->request->getPath(), '/');
+            // Extraer el slug de la ruta (última parte después de /)
+            $pathParts = explode('/', $path);
+            $seccion = end($pathParts);
+        }
+        
+        if(is_null($seccion) || empty($seccion)){
             $this->redirect('/');
         } else{
+            // Convertir guiones a guiones bajos si es necesario
+            $seccion = str_replace('-', '_', $seccion);
+            
             $titulo_seccion = '';
             $slug_separado = explode('_',$seccion);
             foreach ($slug_separado as $key => $slug) {
@@ -46,7 +61,7 @@ class InstitucionalesController extends AppController
                 'rrhh' => '<b>RRHH</b>',
             ];
 
-            $solapa_titulo = $textos_solapa[$seccion];
+            $solapa_titulo = $textos_solapa[$seccion] ?? $seccion;
 
             $this->set(compact('titulo_seccion','titulo_sidebar','secciones_sidebar','solapa_titulo'));
             $this->render($seccion);

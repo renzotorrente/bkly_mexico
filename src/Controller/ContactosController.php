@@ -22,7 +22,6 @@ class ContactosController extends AppController
     {
         $this->viewBuilder()->setLayout('interno');
         if($this->request->is('post')){
-            echo 'llega';
             $email = new Email();
             $email->viewBuilder()->setTemplate('default');
             $email->setFrom(['ros@berkley.com.ar' => 'Berkley México'])
@@ -33,7 +32,7 @@ class ContactosController extends AppController
                   ->setViewVars(['form' => $this->request->getData()])
                   ->send();
             $this->Flash->success(__('Mensaje enviado exitosamente.'));
-            return($this->redirect(['controller' => 'Pages','action' => 'index']));
+            return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'home']);
         }
     }
 

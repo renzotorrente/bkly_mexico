@@ -33,7 +33,7 @@
                             aria-haspopup="true" aria-expanded="false"><b>INSTITUCIONAL</b> <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <?php foreach($institucional as $slug => $titulo): ?>
-                                <li><a href="<?= $this->Url->build(['controller' => 'Institucionales','action' => 'index',$slug])?>"><?= $titulo?></a></li>
+                                <li><a href="/<?= $slug ?>"><?= $titulo?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </li>

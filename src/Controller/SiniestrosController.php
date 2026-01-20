@@ -11,7 +11,8 @@ use Cake\View\Exception\MissingTemplateException;
 
 class SiniestrosController extends AppController
 {
-    public function initialize(){
+    public function initialize(): void
+    {
         parent::initialize();
         $this->viewBuilder()->setLayout('sin_sidebar');
 
