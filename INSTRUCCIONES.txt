@@ -1,0 +1,18 @@
+INSTRUCCIONES PARA IMPLEMENTACIÓN
+---------------------------------
+Una vez copiados todos los archivos al servidor, correr los siguientes comandos en terminal para 
+darle los permisos necesarios a los siguientes archivos y carpetas:
+
+.htaccess - 644
+
+/webroot - 755 (NO recursivo -> chmod 755 webroot/)
+
+/webroot/.htaccess - 644
+
+/webroot/index.php - 644
+
+tmp/ 777 (recursivo -> chmod -R 777 tmp/)
+
+logs/ 777 (recursivo -> chmod -R 777 logs/)
+
+bin/cake - permisos de ejecución (chmod +x bin/cake)

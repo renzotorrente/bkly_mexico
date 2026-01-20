@@ -1,0 +1,100 @@
+# CakePHP
+tmp/
+logs/
+.htaccess
+
+# Composer
+/vendor/
+composer.phar
+composer.lock
+
+# Archivos de configuración sensibles
+config/app.php
+config/.env
+.env
+.env.local
+.env.*.local
+
+# Archivos del sistema operativo
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Archivos de macOS comprimidos
+__MACOSX/
+**/__MACOSX/
+
+# Archivos de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+*.iml
+
+# Archivos de usuario y generados
+webroot/files/*
+!webroot/files/.gitkeep
+webroot/descargas/*
+!webroot/descargas/.gitkeep
+webroot/Cotizaciones/*
+!webroot/Cotizaciones/.gitkeep
+
+# Archivos de cache
+*.cache
+.cache/
+
+# Archivos de backup
+*.bak
+*.backup
+*.old
+*.orig
+
+# Archivos de log
+*.log
+logs/*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Node modules (si se usa npm/yarn)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de PHP
+*.php~
+*.php.bak
+
+# Archivos de prueba y coverage
+.phpunit.result.cache
+coverage/
+.phpunit.cache/
+
+# Archivos de documentación generados
+docs/_build/
+
